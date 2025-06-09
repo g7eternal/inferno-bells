@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body {
+  @apply h-full w-full bg-stone-100 dark:bg-stone-900;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+.bells {
+  cursor: url("cursor.cur"), url("cursor.png"), crosshair;
+}
+.image-mapper-shape {
+  fill: transparent;
+}
+.image-mapper-shape:hover {
+  opacity: 5%;
+  fill: #fff;
+  transition: fill 0.25s ease;
+}
+.debug .image-mapper-shape:hover {
+  opacity: 50%;
+  fill: #ffffff69;
+  stroke: yellow;
+  stroke-width: 2px;
+}
