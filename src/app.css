@@ -12,7 +12,7 @@ button {
 }
 
 .bells {
-  cursor: url("cursor.cur"), url("cursor.png"), crosshair;
+  cursor: url("/cursor.cur"), url("/cursor.png"), crosshair;
 }
 .image-mapper-shape {
   fill: transparent;

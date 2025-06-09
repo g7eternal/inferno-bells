@@ -42,7 +42,8 @@ if (browser) {
 
   sndFileNames.forEach((file, i) => {
     const key = String(i + 1);
-    sounds.set(key, new Sound(key, "/sounds/" + file, true).setDelay(HIT_SND_COOLDOWN));
+    const snd = new Sound(key, "/sounds/" + file, true).setDelay(HIT_SND_COOLDOWN);
+    sounds.set(key, snd.load());
   });
 
   if (dev) console.log(`Done loading ${sounds.size} sounds:`, sounds);

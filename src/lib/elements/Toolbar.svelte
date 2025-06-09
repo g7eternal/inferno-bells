@@ -20,7 +20,7 @@
 >
   <div class="flex flex-row items-center" title="Sound volume">
     <Volume1Icon />
-    <input type="range" min="0" max="100" value={settings.volume} class="w-32" oninput={setVolume} />
+    <input type="range" min="0" max="100" value={settings?.volume || 0} class="w-32" oninput={setVolume} />
   </div>
 
   <div>
