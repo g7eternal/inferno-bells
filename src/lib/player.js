@@ -13,7 +13,7 @@ const sndFileNames = [
   "brass_bell_c.mp3",
 ];
 
-const shotSound = new Sound("shot", "/sounds/glock_02.mp3", true).setDelay(SHOT_SND_COOLDOWN);
+const shotSound = browser ? new Sound("shot", "/sounds/glock_02.mp3", true).setDelay(SHOT_SND_COOLDOWN) : null;
 
 /** @type {Map<String, Sound>} */
 const sounds = new Map();
@@ -33,7 +33,9 @@ export function hit(key) {
  * Play sound of a shot.
  */
 export function shoot() {
-  if (settings.shots) shotSound.volume(settings.volume / 100).play();
+  if (settings.shots && shotSound) {
+    shotSound.volume(settings.volume / 100).play();
+  }
 }
 
 // automatic init:
