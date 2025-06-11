@@ -4,6 +4,8 @@ A simple interactive web application built with SvelteKit that lets you play the
 
 You can play around with it here: https://inferno-bells.pages.dev/
 
+App has basic support for MIDI devices - play corresponding notes to trigger bells (C to G).
+
 ## Tech stack
 
 - SvelteKit

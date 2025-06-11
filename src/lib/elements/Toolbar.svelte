@@ -1,7 +1,16 @@
 <script>
   import { toggleMode } from "mode-watcher";
-  import { CircleOffIcon, CrosshairIcon, GithubIcon, MoonIcon, SunIcon, Volume1Icon } from "lucide-svelte";
+  import {
+    CircleOffIcon,
+    CrosshairIcon,
+    GithubIcon,
+    KeyboardMusicIcon,
+    MoonIcon,
+    SunIcon,
+    Volume1Icon,
+  } from "lucide-svelte";
   import { settings } from "$lib/settings.svelte.js";
+  import { startMidi } from "$lib/midi.js";
 
   /**
    * @param {Event} event
@@ -12,6 +21,17 @@
 
   function toggleShots() {
     settings.shots = !settings.shots;
+  }
+
+  let midiRequested = false;
+  async function toggleMidi(event) {
+    midiRequested = true;
+    if (await startMidi()) {
+      console.info("MIDI enabled!");
+    } else {
+      // log will have info about error
+      midiRequested = false;
+    }
   }
 </script>
 
@@ -37,6 +57,17 @@
       {:else}
         <CircleOffIcon />
       {/if}
+    </button>
+  </div>
+
+  <div>
+    <button
+      onclick={toggleMidi}
+      class="relative flex text-nowrap disabled:opacity-50"
+      title={midiRequested ? "MIDI enabled!" : "Enable MIDI support"}
+      disabled={midiRequested}
+    >
+      <KeyboardMusicIcon />
     </button>
   </div>
 
